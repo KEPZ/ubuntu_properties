@@ -69,14 +69,14 @@ htpasswd -b -c /etc/monit/.htpasswd monit tinom
 
 rm -rf /etc/nginx/sites-enabled/*
 
-echo "server {
+echo 'server {
 listen 999;
 location /monit/ {
 rewrite ^/monit/(.*) /$1 break;
 proxy_ignore_client_abort on;
 proxy_pass http://127.0.0.1:2812;
 }
-}" > /etc/nginx/conf.d/monit.conf
+}' > /etc/nginx/conf.d/monit.conf
 
 systemctl reload nginx 
 
